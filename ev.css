@@ -1,0 +1,65 @@
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.timer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.header {
+    margin: 20px 0;
+}
+.header button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 850px;
+}
+.block {
+    width: 200px;
+    height: 200px;
+    border: 2px brown solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mole {
+    width: 130px;
+    height: 130px;
+    background: url('./mole.jpeg') no-repeat center/cover;
+    position: absolute;
+    display: none;
+}
+.snake {
+    width: 150px;
+    height: 150px;
+    background: url('./mine.jpeg') no-repeat center/cover;
+    position: absolute;
+    display: none;
+}
