@@ -133,9 +133,10 @@ class Controller {
                 this.triggerGameOver();
             } else if (block.hasMole) {
                 block.hasMole = false;
+                this.model.moleQueue = this.model.moleQueue.filter(id => id !== block.id);
                 this.model.score++;
                 this.view.updateScore(this.model.score);
-                this.spawnMole();
+                this.view.renderBoard(this.model.blocks);
             }
         }
     }
