@@ -93,7 +93,7 @@ class Controller {
     spawnMole() {
         let availableBlocks = this.model.blocks.filter(b => !b.hasMole);
 
-        if (this.model.moleQueue.length >= 3) {
+        if (this.model.moleQueue.length > 3) {
             let oldestMoleId = this.model.moleQueue.shift(); 
             let oldestBlock = this.model.blocks.find(b => b.id == oldestMoleId);
             if (oldestBlock) {
@@ -102,11 +102,17 @@ class Controller {
         }
     
         if (availableBlocks.length > 0) {
-          let randomIndex = Math.floor(Math.random() * availableBlocks.length);
-          let block = availableBlocks[randomIndex];
-          block.hasMole = true;
-          this.model.moleQueue.push(block.id); 
-          this.view.renderBoard(this.model.blocks);
+            let randomIndex = Math.floor(Math.random() * availableBlocks.length);
+            let block = availableBlocks[randomIndex];
+            block.hasMole = true;
+            this.model.moleQueue.push(block.id);
+    
+            setTimeout(() => {
+                block.hasMole = false;
+                this.model.moleQueue = this.model.moleQueue.filter(id => id !== block.id); 
+            }, 2000);
+    
+            this.view.renderBoard(this.model.blocks);
         }
     }
     spawnSnake() {
@@ -130,7 +136,6 @@ class Controller {
                 this.model.score++;
                 this.view.updateScore(this.model.score);
                 this.spawnMole();
-                this.view.renderBoard(this.model.blocks);
             }
         }
     }
